@@ -1,0 +1,4 @@
+psycopg2==2.9.10
+Flask==3.1.0
+dotenv==0.9.9
+pytz==2025.2

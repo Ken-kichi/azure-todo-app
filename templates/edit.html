@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Edit Todo</h1>
+    <form action="/edit/{{todo.id}}" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required value="{{todo.title}}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                required>{{todo.description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="completed" class="form-label">Completed</label>
+            <select class="form-select" id="completed" name="completed" style="width: auto;">
+                <option value="true" {% if todo.completed %}selected{% endif %}>完了</option>
+                <option value="false" {% if not todo.completed %}selected{% endif %}>未完了</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="created_at" class="form-label">登録日</label>
+            <p>{{todo.created_at}}</p>
+        </div>
+        <div class="mb-3">
+            <label for="updated_at" class="form-label">更新日</label>
+            <p>{{todo.updated_at}}</p>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
